@@ -1,0 +1,145 @@
+Задание №1
+
+using System;
+
+int[] collection = new int[10];
+Random rnd = new Random();
+
+for (int i = 0; i < collection.Length; i++)
+{
+    collection[i] = rnd.Next(100);
+}
+
+int MinIndex = 0;
+
+for (int i = 1; i < collection.Length; i++)
+{
+    if (collection[i] < collection[MinIndex])
+    {
+        MinIndex = i;
+    }
+}
+Console.WriteLine("Коллекция чисел: ");
+
+for (int i = 0; i < collection.Length; i++)
+{
+    Console.Write(collection[i] + " ");
+}
+Console.WriteLine();
+Console.WriteLine("Индекс минимально числа:" + MinIndex);
+
+Задание №2
+
+using System;
+using System.Collections.Generic;
+
+
+List<float> numbers = new List<float>();
+Console.WriteLine("Введите числа (введите 0, чтобы остановиться): ");
+
+float input = 0;
+
+do
+{
+    input = float.Parse(Console.ReadLine());
+    if (input != 0)
+    {
+        numbers.Add(input);
+    }
+} 
+
+while (input != 0);
+
+int sum = 0;
+int product = 1;
+
+foreach (int num in numbers)
+{
+    sum += num;
+    product *= num;
+}
+
+float average = sum / numbers.Count;
+
+Console.WriteLine($"Сумма чисел: {sum} \nПроизведение чисел: {product} \nСреднее значение: {average} \n");
+
+Задание №3
+
+List<string> strings = new List<string>();
+Console.WriteLine("Введите список слов/цифр (оставьте строку пустой для завершения): ");
+
+string input;
+
+while (!string.IsNullOrWhiteSpace(input = Console.ReadLine()))
+{
+    strings.Add(input);
+}
+
+if (strings.Count > 0)
+{
+    strings.Sort((a, b) => a.Length.CompareTo(b.Length));
+
+    Console.WriteLine("Самый короткий элемент: " + strings[0]);
+    Console.WriteLine("Самый длинный элемент: " + strings[strings.Count - 1]);
+}
+
+else
+{
+    Console.WriteLine("Список пуст");
+}
+
+ЗАДАНИЕ №4
+
+using System;
+using System.Collections.Generic;
+
+static int[] GenerateRandomArray(int start, int end)
+{
+    Random random = new Random();
+    List<int> numbers = new List<int>();
+
+    for (int i = start; i <= end; i++)
+    {
+        numbers.Add(random.Next(start, end + 1));
+    }
+
+    return numbers.ToArray();
+}
+
+Console.WriteLine("Введите начало диапазона:");
+int start = int.Parse(Console.ReadLine());
+
+Console.WriteLine("Введите конец диапазона:");
+int end = int.Parse(Console.ReadLine());
+
+int[] array = GenerateRandomArray(start, end);
+
+for (int i = 0; i < array.Length; i++)
+{
+    Console.Write(array[i] + " ");
+}
+
+ЗАДАНИЕ №5
+
+List<string> words = new List<string>();
+Console.WriteLine("Введите слова (пустая строка для завершения):\n");
+Console.WriteLine("Start\n");
+
+do
+{
+    string input = Console.ReadLine();
+    if (string.IsNullOrEmpty(input))
+    {
+        Console.WriteLine("End\n");
+        break;
+    }
+    words.Add(input);
+} while (true);
+
+int score = 0;
+
+for (int i = 0; i < words.Count; ++i)
+{
+    score++;
+}
+Console.WriteLine($"Количество слов: {score}");

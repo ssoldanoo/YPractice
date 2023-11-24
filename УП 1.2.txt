@@ -1,0 +1,101 @@
+Задание №1
+
+    int[] collection = new int[100];
+    int number = 100;
+
+    for (int i = 0; i < collection.Length; i++)
+    {
+        collection[i] = number;
+        number -= 3;
+    }
+
+    Console.WriteLine("Коллекция чисел:");
+
+    foreach (int num in collection)
+    {
+        Console.Write(num + " ");
+    }
+
+    Console.WriteLine();
+
+ЗАДАНИЕ №2
+
+int[] numbers = new int[100];
+int num = 1;
+
+for (int i = 1; i < numbers.Length; ++i)
+{
+    numbers[i] = num;
+    num += 2;
+}
+for (int i = 0; i < numbers.Length; ++i)
+{
+    Console.WriteLine(numbers[i]);
+}
+
+ЗАДАНИЕ №3
+
+Console.Write("Введите количество строк: ");
+int rows = int.Parse(Console.ReadLine());
+
+Console.Write("Введите количество столбцов: ");
+int columns = int.Parse(Console.ReadLine());
+
+int[,] matrix = new int[rows, columns];
+
+for (int i = 0; i < rows; ++i)
+{
+    for (int j = 0; j < columns; ++j)
+    {
+        matrix[0, j] = 1;
+        matrix[i, 0] = 1;
+
+        if (i > 0 & j > 0)
+        {
+            matrix[i, j] = matrix[i - 1, j] + matrix[i, j - 1];
+        }
+    }
+}
+
+for (int i = 0; i < rows; ++i)
+{
+    for (int j = 0; j < columns; ++j)
+    {
+        Console.Write(matrix[i, j] + "\t");
+    }
+    Console.WriteLine();
+}
+
+ЗАДАНИЕ №4
+
+static int[] RandomAverage()
+{
+    int[,] month = new int[12, 30];
+    int[] temperature = new int[12];
+    Random rnd = new Random();
+
+    for (int i = 0; i < 12; i++)
+    {
+        for (int j = 0; j < 30; j++)
+        {
+            month[i, j] = rnd.Next(-40, 30);
+        }
+    }
+
+    for (int i = 0; i < 12; i++)
+    {
+        for (int j = 0; j < 30; j++)
+        {
+            temperature[i] += month[i, j];
+        }
+    }
+    return temperature;
+}
+
+int[] average = RandomAverage();
+
+for (int i = 0; i < 12; i++)
+{
+    Console.WriteLine($"{i + 1} = {average[i] / 30}");
+}
+

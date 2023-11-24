@@ -1,0 +1,47 @@
+ЗАДАНИЕ №1
+
+class Program
+{
+    static void Main()
+    {
+        string path = "D:\\Visual Studio 2022 Purple\\УП1\\УП1\\bin\\Debug\\net6.0\\input.txt";
+        string[] lines = File.ReadAllLines("input.txt");
+
+        int[] chosenNumbers = lines[0].Split().Select(int.Parse).ToArray();
+
+        int n = int.Parse(lines[1]);
+
+        string[] results = new string[n];
+
+        for (int i = 0; i < n; i++)
+        {
+            int[] ticketNumbers = lines[i + 2].Split().Select(int.Parse).ToArray();
+
+            int matchCount = ticketNumbers.Count(number => chosenNumbers.Contains(number));
+
+            results[i] = matchCount >= 3 ? "Lucky" : "Unlucky";
+        }
+
+        File.WriteAllLines("output.txt", results);
+    }
+}
+
+ЗАДАНИЕ №2
+
+class Program
+{
+    static void Main()
+    {
+        int[] numbers = File.ReadAllText("nums.txt").Split().Select(int.Parse).ToArray();
+
+        int[] oddNumbers = numbers.Where(n => n % 2 != 0).ToArray();
+
+        string result = string.Join(" ", oddNumbers);
+
+        File.WriteAllText("nums.txt", result);
+    }
+}
+
+ЗАДАНИЕ №3
+
+-

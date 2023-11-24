@@ -15,7 +15,7 @@ Console.WriteLine($"Произведение кратное трём и не п�
 
 ЗАДАНИЕ №2
 
-string path = "/Users/aleksej/Documents/Учёба/C#/Практика 1/1.4/numsTask2.txt";
+string path = "D:\Visual Studio 2022 Purple\УП1\УП1\bin\Debug\net6.0\numsTask2.txt";
 string[] numbers = File.ReadAllText(path).Split(';');
 
 float[] nums = new float[numbers.Length];
